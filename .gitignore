@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Local IDE/Environment settings
+.gemini/
+.agents/
+scratch/
+browser/
+.vscode/
+
+# Large models or temporary backups
+backup/
+*.log
+
+# Exclude docs folder
+docs/
+

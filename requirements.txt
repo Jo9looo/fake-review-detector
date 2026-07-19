@@ -1,0 +1,15 @@
+scikit-learn
+pandas
+numpy
+joblib
+streamlit
+vaderSentiment
+nltk
+matplotlib
+seaborn
+scipy
+deep-translator
+lightgbm
+lime
+plotly
+
