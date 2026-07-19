@@ -110,6 +110,6 @@ Aplikasi akan terbuka di browser lokal pada alamat `http://localhost:8501`.
 
 ## Identitas Pengembang
 
-* **Nama**: Dandy Prasetyo Nugroho
-* **NIM**: A11.2024.15645
-* **Program Studi**: Teknik Informatika - Universitas Dian Nuswantoro (UDINUS)
+* **Nama**: Muhammad Iqbal Satria Hutama
+* **NIM**: A11.2024.15637
+* **Program Studi**: Teknik Informatika - Universitas Dian Nuswantoro

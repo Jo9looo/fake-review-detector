@@ -265,6 +265,19 @@ if menu == "Demo Deteksi Ulasan":
         weights = json.load(f)
         
     st.markdown("#### Uji Model Secara Real-Time")
+    
+    with st.expander("📖 Panduan Langkah-demi-Langkah Penggunaan Demo Model"):
+        st.markdown("""
+        1. **Pilih atau Ketik Ulasan**: Ketik ulasan produk pada kolom teks di bawah (dalam Bahasa Indonesia atau Bahasa Inggris), atau pilih salah satu contoh ulasan dari menu *dropdown*.
+        2. **Tekan Tombol Analisis**: Klik tombol biru **'Mulai Analisis Keaslian'** untuk memproses ulasan.
+        3. **Baca Kartu Hasil Prediksi**: 
+           - 🟢 **GENUINE (Kartu Hijau)**: Ulasan diprediksi **ASLI** (ditulis oleh pembeli/pengguna nyata).
+           - 🔴 **FAKE (Kartu Merah)**: Ulasan diprediksi **PALSU / DIBUAT KOMPUTER**, beserta kategori pola kecurangan yang terdeteksi (seperti *Deceptive*, *Bot-Generated*, *Spam*, atau *Paid/Promotional*).
+        4. **Amati Terjemahan Bahasa**: Jika Anda mengetik dalam Bahasa Indonesia, kotak info biru akan menampilkan hasil terjemahan Bahasa Inggris yang dianalisis oleh model secara transparan.
+        5. **Amati Interpretasi Kata (XAI / Explainable AI)**: Kata-kata diwarnai <span style="color:#ef4444; font-weight:bold;">MERAH</span> (mendorong ke arah Palsu) atau <span style="color:#10b981; font-weight:bold;">HIJAU</span> (mendorong ke arah Asli) berdasarkan bobot koefisien SVM.
+        6. **Pantau Metrik Kebahasaan**: Perhatikan 5 kartu statistik linguistik ulasan Anda terhadap rata-rata ulasan asli vs palsu pada dataset riset.
+        """, unsafe_allow_html=True)
+        
     st.write("Anda bisa mengetik ulasan secara manual atau memilih contoh yang disediakan di bawah ini:")
     
     examples = {
