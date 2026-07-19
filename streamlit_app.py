@@ -589,10 +589,11 @@ elif menu == "Evaluasi & Performa Model":
         ab_path = 'outputs/results/feature_ablation_study.csv'
         if os.path.exists(ab_path):
             ab_df = pd.read_csv(ab_path)
+            y_col_ab = 'Feature Configuration' if 'Feature Configuration' in ab_df.columns else ab_df.columns[0]
             # Ensure sort by F1-Score
             ab_df = ab_df.sort_values(by='F1-Score', ascending=True)
-            fig_ab = px.bar(ab_df, x='F1-Score', y='Features Removed', orientation='h',
-                            color='Features Removed', color_discrete_sequence=px.colors.qualitative.Set3,
+            fig_ab = px.bar(ab_df, x='F1-Score', y=y_col_ab, orientation='h',
+                            color=y_col_ab, color_discrete_sequence=px.colors.qualitative.Set3,
                             template='plotly_dark')
             fig_ab.update_layout(margin=dict(t=20, b=20, l=20, r=20), height=350, showlegend=False, xaxis_range=[0.85, 0.90])
             st.plotly_chart(fig_ab, use_container_width=True)
@@ -605,8 +606,13 @@ elif menu == "Evaluasi & Performa Model":
         fi_path = 'outputs/results/feature_importance_rf.csv'
         if os.path.exists(fi_path):
             fi_df = pd.read_csv(fi_path)
-            fi_df = fi_df.sort_values(by='importance', ascending=True)
-            fig_fi = px.bar(fi_df, x='importance', y='feature', orientation='h',
+            # Filter for engineered features or top 10 overall features for clarity
+            eng_features = ['text_length', 'exclamation_count', 'uppercase_ratio', 'sentiment_score', 'lexical_diversity']
+            fi_df_filtered = fi_df[fi_df['feature'].isin(eng_features)].sort_values(by='importance', ascending=True)
+            if fi_df_filtered.empty:
+                fi_df_filtered = fi_df.head(10).sort_values(by='importance', ascending=True)
+                
+            fig_fi = px.bar(fi_df_filtered, x='importance', y='feature', orientation='h',
                              color='feature', color_discrete_sequence=px.colors.qualitative.Pastel2,
                              template='plotly_dark')
             fig_fi.update_layout(margin=dict(t=20, b=20, l=20, r=20), height=350, showlegend=False)
